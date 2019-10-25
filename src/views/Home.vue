@@ -89,12 +89,13 @@ export default {
     window.addEventListener("resize", () => {
       this.cardHeight = window.innerHeight - 90;
     });
-    let localStorageCache = JSON.parse(localStorage.cache);
-    console.log(localStorageCache);
-    this.cache = localStorageCache;
-    if (localStorageCache.length > 0) {
-      this.amountSlider = this.cache[this.cache.length - 1].principal.amount;
-      this.monthsSlider = this.cache[this.cache.length - 1].numPayments;
+    if (typeof localStorage.cache !== "undefined") {
+      let localStorageCache = JSON.parse(localStorage.cache);
+      this.cache = localStorageCache;
+      if (localStorageCache.length > 0) {
+        this.amountSlider = this.cache[this.cache.length - 1].principal.amount;
+        this.monthsSlider = this.cache[this.cache.length - 1].numPayments;
+      }
     }
   },
 
